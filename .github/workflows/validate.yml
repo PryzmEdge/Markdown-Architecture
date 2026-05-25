@@ -1,0 +1,46 @@
+# .github/workflows/validate.yml
+# Runs stage-contract.py on every pull request and push to main.
+# Blocks merge if any stage contract fails.
+
+name: Validate Stage Contracts
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Stage Contract Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run stage-contract validator
+        run: python _config/stage-contract.py --stage all
+
+      - name: Validate CONTRIBUTING and LICENSE exist
+        run: |
+          test -f CONTRIBUTING.md || (echo "CONTRIBUTING.md missing" && exit 1)
+          test -f LICENSE         || (echo "LICENSE missing" && exit 1)
+
+      - name: Check for ATTENTION.md flags
+        run: |
+          FLAGS=$(find stages/ -name "ATTENTION.md" 2>/dev/null | wc -l)
+          if [ "$FLAGS" -gt 0 ]; then
+            echo "WARNING: $FLAGS unresolved ATTENTION.md flag(s) found:"
+            find stages/ -name "ATTENTION.md"
+            echo "These indicate stages awaiting operator review."
+            # Warn only — does not block CI. Change to exit 1 to enforce.
+          fi
