@@ -1,5 +1,5 @@
 ---
-version: "8.0.0"
+version: "9.0.0"
 tokens: "≤800"
 scope: "navigation, structure, identity"
 do_not_use_for: "hard constraints, behavioral enforcement"
@@ -7,7 +7,7 @@ do_not_use_for: "hard constraints, behavioral enforcement"
 
 # Quant Workspace — CLAUDE.md
 
-> **Scope**: Structural navigation and identity only. Hard constraints live in hooks. Schema contracts live in Pydantic models. See `docs/v8.md` Part 3 and Part 6 for the full enforcement model.
+> **Scope**: Structural navigation and identity only. Hard constraints live in hooks. Schema contracts live in `_config/stage-contract.py`. See `docs/v10-draft.md` for the current engineering position paper.
 
 ---
 
@@ -21,12 +21,14 @@ This is a quant research and AI-native DevOps workspace structured with the Inte
 
 ```
 quant-workspace/
-├── CLAUDE.md                   ← This file (≤800 tokens, navigation only)
+├── CLAUDE.md                        ← This file (≤800 tokens, navigation only)
 ├── docs/
-│   └── v8.md                   ← Engineering position paper
+│   ├── v10-draft.md                 ← Current canonical engineering position paper
+│   ├── adr/                         ← ADR-000 index through ADR-005
+│   └── [v8, v9 archived]
 ├── _config/
-│   ├── domain-rules.md         ← Constraints applied at every stage
-│   └── stage-contract.py       ← Pydantic StageContract schema
+│   ├── domain-rules.md              ← Constraints applied at every stage
+│   └── stage-contract.py            ← Pydantic-style StageContract validator
 ├── stages/
 │   ├── 00-intake/
 │   │   └── CONTEXT.md
@@ -37,7 +39,7 @@ quant-workspace/
 │   └── 03-output/
 │       └── CONTEXT.md
 ├── .claude/
-│   ├── settings.json           ← Hooks (hard constraints, deterministic enforcement)
+│   ├── settings.json                ← Hooks (hard constraints, deterministic enforcement)
 │   └── hooks/
 │       └── validate-mcp-response.py
 └── Makefile
