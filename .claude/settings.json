@@ -1,77 +1,84 @@
 {
-  "_comment": "Hard constraints only. Probabilistic behavior goes in CLAUDE.md. See docs/v8.md Part 3 and Part 6.",
+  "version": 1,
+  "project": {
+    "name": "Markdown Architecture",
+    "description": "AI-native DevOps workspace using ICM and Markdown as orchestration substrate."
+  },
+
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-filesystem"],
+      "env": {
+        "MCP_FILESYSTEM_ROOT": "."
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-github"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    }
+  },
+
   "hooks": {
-    "PreToolUse": [
+    "preCommit": [
       {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".claude/hooks/block-dangerous-bash.sh",
-            "description": "Block destructive shell commands before execution"
-          }
-        ]
-      },
-      {
-        "matcher": "mcp__*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".claude/hooks/log-mcp-invocation.sh",
-            "description": "Log every MCP tool invocation for audit trail"
-          }
-        ]
-      },
-      {
-        "matcher": "Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".claude/hooks/block-write-to-output-without-approval.sh",
-            "description": "Block writes to output/ unless operator_approved=true in stage frontmatter"
-          }
-        ]
+        "name": "validate-stage-contracts",
+        "command": "python",
+        "args": ["_config/stage-contract.py", "--stage", "all"],
+        "cwd": ".",
+        "onError": "block"
       }
     ],
-    "PostToolUse": [
+
+    "preCommand": [
       {
-        "matcher": "mcp__*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python .claude/hooks/validate-mcp-response.py",
-            "description": "Validate every MCP tool response before it enters reasoning context. MCP is not a trusted execution boundary. See docs/v8.md Part 8."
-          }
-        ]
-      },
+        "name": "risk-check-shell-command",
+        "command": "python",
+        "args": [
+          "_config/stage-contract.py",
+          "--assess-command",
+          "${commandLine}"
+        ],
+        "cwd": ".",
+        "onError": "warn"
+      }
+    ],
+
+    "postEdit": [
       {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".claude/hooks/log-bash-execution.sh",
-            "description": "Append bash execution record to audit log"
-          }
-        ]
+        "name": "write-prompt-execution-receipt",
+        "command": "python",
+        "args": [
+          ".claude/hooks/validate-mcp-response.py",
+          "--path",
+          "${filePath}"
+        ],
+        "cwd": ".",
+        "onError": "warn"
       }
     ]
   },
-  "permissions": {
-    "allow": [
-      "Bash(git:*)",
-      "Bash(make:*)",
-      "Bash(python:*)",
-      "Bash(ripgrep:*)",
-      "Bash(grep:*)",
-      "Read",
-      "Write"
+
+  "rules": {
+    "allowShell": true,
+    "allowedCommands": [
+      "git status",
+      "git diff",
+      "git add",
+      "git commit",
+      "make validate",
+      "make stage-00-intake",
+      "make stage-01-research",
+      "make stage-02-analysis",
+      "make stage-03-output"
     ],
-    "deny": [
-      "Bash(rm -rf *)",
-      "Bash(DROP *)",
-      "Bash(truncate *)",
-      "Bash(curl * | bash)",
-      "Bash(wget * | bash)"
+    "blockedPatterns": [
+      "rm -rf /",
+      "DROP DATABASE",
+      "DELETE FROM"
     ]
   }
 }
