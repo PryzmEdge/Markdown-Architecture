@@ -4,35 +4,42 @@
     "name": "Markdown Architecture",
     "description": "AI-native DevOps workspace using ICM and Markdown as orchestration substrate."
   },
-
   "mcpServers": {
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@anthropic/mcp-server-filesystem"],
+      "args": [
+        "-y",
+        "@anthropic/mcp-server-filesystem"
+      ],
       "env": {
         "MCP_FILESYSTEM_ROOT": "."
       }
     },
     "github": {
       "command": "npx",
-      "args": ["-y", "@anthropic/mcp-server-github"],
+      "args": [
+        "-y",
+        "@anthropic/mcp-server-github"
+      ],
       "env": {
         "GITHUB_TOKEN": "${GITHUB_TOKEN}"
       }
     }
   },
-
   "hooks": {
     "preCommit": [
       {
         "name": "validate-stage-contracts",
         "command": "python",
-        "args": ["_config/stage-contract.py", "--stage", "all"],
+        "args": [
+          "_config/stage-contract.py",
+          "--stage",
+          "all"
+        ],
         "cwd": ".",
         "onError": "block"
       }
     ],
-
     "preCommand": [
       {
         "name": "risk-check-shell-command",
@@ -46,7 +53,6 @@
         "onError": "warn"
       }
     ],
-
     "postEdit": [
       {
         "name": "write-prompt-execution-receipt",
@@ -59,9 +65,19 @@
         "cwd": ".",
         "onError": "warn"
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CMD=$(python3 -c \"import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',d).get('command',''))\" 2>/dev/null || true); case \"$CMD\" in *grep*|*rg\\ *|*ripgrep*|*find\\ *|*fd\\ *|*ack\\ *|*ag\\ *)   [ -f graphify-out/graph.json ] &&   echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"graphify: knowledge graph at graphify-out/. For focused questions, run `graphify query \\\"<question>\\\"` (scoped subgraph, usually much smaller than GRAPH_REPORT.md) instead of grepping raw files. Read GRAPH_REPORT.md only for broad architecture context.\"}}'   || true ;; esac"
+          }
+        ]
+      }
     ]
   },
-
   "rules": {
     "allowShell": true,
     "allowedCommands": [
