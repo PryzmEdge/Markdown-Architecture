@@ -1,0 +1,134 @@
+{
+  "mode": "mock",
+  "iterations_per_cell": 5,
+  "cells": [
+    {
+      "model": "claude-haiku-4-5",
+      "gate": "permissive",
+      "mock_behavior": "good",
+      "n": 5,
+      "gate_pass_rate": 1.0,
+      "contradiction_detection_rate": 1.0,
+      "operator_override_rate": 0.0
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "gate": "normal",
+      "mock_behavior": "good",
+      "n": 5,
+      "gate_pass_rate": 1.0,
+      "contradiction_detection_rate": 1.0,
+      "operator_override_rate": 0.0
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "gate": "strict",
+      "mock_behavior": "good",
+      "n": 5,
+      "gate_pass_rate": 1.0,
+      "contradiction_detection_rate": 1.0,
+      "operator_override_rate": 0.0
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "gate": "permissive",
+      "mock_behavior": "good",
+      "n": 5,
+      "gate_pass_rate": 1.0,
+      "contradiction_detection_rate": 1.0,
+      "operator_override_rate": 0.0
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "gate": "normal",
+      "mock_behavior": "good",
+      "n": 5,
+      "gate_pass_rate": 1.0,
+      "contradiction_detection_rate": 1.0,
+      "operator_override_rate": 0.0
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "gate": "strict",
+      "mock_behavior": "good",
+      "n": 5,
+      "gate_pass_rate": 1.0,
+      "contradiction_detection_rate": 1.0,
+      "operator_override_rate": 0.0
+    },
+    {
+      "model": "claude-opus-4-7",
+      "gate": "permissive",
+      "mock_behavior": "forgetful",
+      "n": 5,
+      "gate_pass_rate": 1.0,
+      "contradiction_detection_rate": 0.0,
+      "operator_override_rate": 0.0
+    },
+    {
+      "model": "claude-opus-4-7",
+      "gate": "normal",
+      "mock_behavior": "forgetful",
+      "n": 5,
+      "gate_pass_rate": 1.0,
+      "contradiction_detection_rate": 0.0,
+      "operator_override_rate": 0.0
+    },
+    {
+      "model": "claude-opus-4-7",
+      "gate": "strict",
+      "mock_behavior": "forgetful",
+      "n": 5,
+      "gate_pass_rate": 1.0,
+      "contradiction_detection_rate": 0.0,
+      "operator_override_rate": 0.0
+    }
+  ],
+  "axis_A_model_vs_pass_rate (gate=normal)": [
+    [
+      "claude-haiku-4-5",
+      1.0
+    ],
+    [
+      "claude-sonnet-4-6",
+      1.0
+    ],
+    [
+      "claude-opus-4-7",
+      1.0
+    ]
+  ],
+  "axis_A_model_vs_contradiction_rate (gate=normal)": [
+    [
+      "claude-haiku-4-5",
+      1.0
+    ],
+    [
+      "claude-sonnet-4-6",
+      1.0
+    ],
+    [
+      "claude-opus-4-7",
+      0.0
+    ]
+  ],
+  "axis_B_gate_vs_pass_rate (model=claude-haiku-4-5)": [
+    [
+      "permissive",
+      1.0
+    ],
+    [
+      "normal",
+      1.0
+    ],
+    [
+      "strict",
+      1.0
+    ]
+  ],
+  "interpretation_notes": [
+    "If axis A is flat and axis B is steep \u2192 thesis supported.",
+    "If axis A is steep and axis B is flat \u2192 thesis falsified.",
+    "Mock mode does not exercise the real thesis; rerun with --mode claude on a machine with $ANTHROPIC_API_KEY for actual data."
+  ]
+}

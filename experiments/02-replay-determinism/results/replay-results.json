@@ -1,0 +1,68 @@
+{
+  "run_id": "ca3bebb3-741e-401e-b55b-b01ae7a3e4df",
+  "database_url": "postgresql://ma:***@localhost:5432/markdown_arch",
+  "gate": {
+    "recorded": {
+      "contract_passed": true,
+      "status_approved": true,
+      "operator_approved": true
+    },
+    "replayed": {
+      "operator_approved": true,
+      "status_approved": true,
+      "contract_passed": true
+    },
+    "match": true
+  },
+  "receipt": {
+    "recorded_hash": "b9d43b7e4af545e5e217ac431db57d2c0a58bfb34bc0e5b1ef0b189e9939ea95",
+    "replayed_hash": "5161d1ae3f90781456a998cb350803deb82dbefda46946a3fa35426e56e021ea",
+    "hashes_match": false,
+    "fields_match": [
+      "agent_id",
+      "cost",
+      "gate_check_results",
+      "input_artifacts",
+      "llm_prompt_hash",
+      "llm_response_hash",
+      "output_artifacts",
+      "stage_id",
+      "workflow_run_id",
+      "yaml_frontmatter_snapshot"
+    ],
+    "fields_differ": {
+      "operator_signoff": {
+        "recorded": {
+          "name": "replay-canonical",
+          "comment": "Buildability proof \u2014 Stage 00 gate validated.",
+          "timestamp": "2026-05-27T12:35:10.981492Z"
+        },
+        "replayed": {
+          "name": "replay-canonical",
+          "timestamp": "2026-05-27T12:35:53.255565Z",
+          "comment": "Buildability proof \u2014 Stage 00 gate validated."
+        }
+      },
+      "receipt_id": {
+        "recorded": "0345a493-a2e5-472e-b64d-3b2d1ba25219",
+        "replayed": "21c7e2a6-5d17-4476-813f-6aa76974ca44"
+      },
+      "timestamp": {
+        "recorded": "2026-05-27T12:35:10.981492Z",
+        "replayed": "2026-05-27T12:35:53.255565Z"
+      }
+    },
+    "expected_non_deterministic_fields": [
+      "operator_signoff",
+      "receipt_id",
+      "timestamp"
+    ],
+    "unexpected_divergence": [],
+    "expected_divergence_not_observed": []
+  },
+  "verdict": {
+    "gate_determinism": "PASS",
+    "receipt_determinism": "FAIL (non-deterministic body)",
+    "overall": "FAIL"
+  }
+}
