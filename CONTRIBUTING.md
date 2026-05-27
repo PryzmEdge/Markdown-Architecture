@@ -48,7 +48,7 @@ deciders: [operator-name]
 
 ## Pull Request Conventions
 
-- **Branch naming**: `feat/<slug>`, `fix/<slug>`, `adr/<NNN>-<slug>`, `docs/<slug>`
+- **Branch naming**: `feat/<slug>`, `fix/<slug>`, `chore/<slug>`, `adr/<NNN>-<slug>`, `docs/<slug>`
 - **Commit messages**: `<type>: <short description>` (e.g. `config: add stage-contract validation for 02-analysis`)
 - **PR description**: include the stage affected, what changed, and whether operator approval has been given
 - **Draft PRs**: use for work in progress; convert to ready when CI passes
@@ -69,9 +69,13 @@ deciders: [operator-name]
 ```bash
 git clone https://github.com/PryzmEdge/Markdown-Architecture.git
 cd Markdown-Architecture
-pip install pyyaml          # required for stage-contract.py and skills
-make validate               # confirm all stage contracts pass
+pip install pyyaml pytest                       # stage-contract + tests
+pip install -r proof/requirements.txt           # Stage 1 buildability proof
+make validate                                   # confirm all stage contracts pass
+python -m pytest                                # run the full test suite
 ```
+
+To run the Stage 1 buildability proof end-to-end (Docker Postgres + receipt round-trip), see [`proof/tutorial.md`](proof/tutorial.md).
 
 ---
 

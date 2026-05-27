@@ -22,27 +22,23 @@ This is the **Markdown Architecture** workspace — a research and AI-native Dev
 ```
 Markdown-Architecture/
 ├── CLAUDE.md                        ← This file (≤800 tokens, navigation only)
+├── README.md, CONTRIBUTING.md, LICENSE, Makefile
 ├── docs/
 │   ├── v10-draft.md                 ← Current canonical engineering position paper
 │   ├── adr/                         ← ADR-000 index through ADR-005
-│   └── [v8, v9 archived]
+│   ├── gstack-usage.md, gbrain-usage.md, graphify-usage.md  ← External tooling companions
+│   └── [blueprint-v2.x, v8, v9 archived; ip-disclosure.md]
 ├── _config/
 │   ├── domain-rules.md              ← Constraints applied at every stage
-│   └── stage-contract.py            ← StageContract validator
-├── stages/
-│   ├── 00-intake/
-│   │   └── CONTEXT.md
-│   ├── 01-research/
-│   │   └── CONTEXT.md
-│   ├── 02-analysis/
-│   │   └── CONTEXT.md
-│   └── 03-output/
-│       └── CONTEXT.md
-├── .claude/
-│   ├── settings.json                ← Hooks (hard constraints, deterministic enforcement)
-│   └── hooks/
-│       └── validate-mcp-response.py
-└── Makefile
+│   ├── risk-register.md             ← Project risk register
+│   ├── stage-contract.py            ← StageContract validator
+│   └── skills/                      ← audit_logger.py, graphify_query.py
+├── stages/                          ← 00-intake / 01-research / 02-analysis / 03-output, each with CONTEXT.md
+├── proof/                           ← Stage 1 buildability proof (workflow.py, ingester.py, schema.sql) + Diataxis docs
+├── tests/                           ← pytest suite + fixtures/
+└── .claude/
+    ├── settings.json                ← Hooks (hard constraints, deterministic enforcement)
+    └── hooks/validate-mcp-response.py
 ```
 
 ---
