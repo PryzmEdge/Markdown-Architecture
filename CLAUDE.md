@@ -103,6 +103,7 @@ Load on demand — do not load all skills on every turn:
 - `domain-validator` — validate stage artifacts against `domain-rules.md`
 - `context-compiler` — assemble token-budgeted context from stage inputs
 - `audit-logger` — write `PromptExecutionReceipt` to the append-only log
+- `gstack` / `gbrain` (external) — see `docs/gstack-usage.md`
 
 ---
 
