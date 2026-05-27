@@ -110,8 +110,8 @@ Markdown-Architecture/
 │   │   ├── ADR-000-index.md
 │   │   ├── ADR-001-postgres-state-kernel.md       ← Use PostgreSQL as state kernel
 │   │   ├── ADR-002-crdt-bytea-pattern.md          ← Automerge/Yjs as bytea blobs
-│   │   ├── ADR-003-datalog-policy-engine.md       ← Datalog for lattice queries
-│   │   ├── ADR-004-fides-label-lattice.md         ← FIDES IFC label lattice
+│   │   ├── ADR-003-datalog-lattice-traversal.md   ← Datalog (pg_mentat) for lattice traversal over recursive CTEs
+│   │   ├── ADR-004-fides-product-lattice-authority.md ← FIDES two-element product lattice as authority substrate
 │   │   └── ADR-005-temporal-dbos-workflow-split.md ← Temporal/DBOS workflow split
 │   └── [v8.md, v9.md — archived]
 ├── _config/
@@ -293,8 +293,8 @@ sources_count: 5               # stage-01 specific
 |---|---|---|---|
 | ADR-001 | PostgreSQL as state kernel and provenance ledger | Accepted | Stage 03 receipts |
 | ADR-002 | Automerge/Yjs bytea-blob CRDT over Postgres | Accepted | Collaboration layer |
-| ADR-003 | Datalog as policy and query engine | Accepted | Stage 02, Part 12.8 |
-| ADR-004 | FIDES information-flow label lattice | Accepted | Stage 03 receipts, IFC |
+| ADR-003 | Datalog (pg_mentat) for lattice traversal over recursive CTEs | Accepted | Stage 02, Part 12.8 |
+| ADR-004 | FIDES two-element product lattice as authority substrate | Accepted | Stage 03 receipts, IFC |
 | ADR-005 | Temporal/DBOS workflow split | Accepted | Pipeline orchestration |
 
 ---

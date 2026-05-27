@@ -122,8 +122,8 @@ Markdown-Architecture/
 │       ├── ADR-000-index.md
 │       ├── ADR-001-postgres-state-kernel.md
 │       ├── ADR-002-crdt-bytea-pattern.md
-│       ├── ADR-003-datalog-policy-engine.md
-│       ├── ADR-004-fides-label-lattice.md
+│       ├── ADR-003-datalog-lattice-traversal.md
+│       ├── ADR-004-fides-product-lattice-authority.md
 │       └── ADR-005-temporal-dbos-workflow-split.md
 ├── _config/
 │   ├── domain-rules.md
