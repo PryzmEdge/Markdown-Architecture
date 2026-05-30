@@ -3,6 +3,7 @@ status: draft
 operator_approved: false
 risk_check_passed: false
 stage: "00-intake"
+domain: ""
 ---
 
 # Stage 00 — Intake

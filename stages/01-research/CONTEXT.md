@@ -3,6 +3,8 @@ status: draft
 operator_approved: false
 risk_check_passed: false
 stage: "01-research"
+domain: ""
+sources_count: 0
 ---
 
 # Stage 01 — Research
@@ -54,6 +56,7 @@ If any field is missing or `operator_approved: false`, halt and return to Stage 
 
 ## Acceptance Criteria
 - [ ] ≥3 sources evaluated with quality and relevance scored
+- [ ] `sources_count` in frontmatter matches actual table row count
 - [ ] Contradictions log exists (even if empty)
 - [ ] `stage-contract.py` validation passes
 - [ ] `operator_approved: true` set by operator

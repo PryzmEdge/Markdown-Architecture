@@ -3,6 +3,8 @@ status: draft
 operator_approved: false
 risk_check_passed: false
 stage: "02-analysis"
+domain: ""
+risk_tier: ""
 ---
 
 # Stage 02 — Analysis
@@ -55,7 +57,7 @@ Source log must have ≥3 rows. Contradictions log must exist.
 ## Acceptance Criteria
 - [ ] Every top finding mapped (supports / refutes / neutral)
 - [ ] Counter-argument section present
-- [ ] Risk tier assigned and documented
+- [ ] Risk tier assigned and documented in `risk_tier` frontmatter field
 - [ ] `risk_check_passed: true` if tier is High or Critical
 - [ ] `stage-contract.py` passes
 - [ ] `operator_approved: true`

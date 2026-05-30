@@ -1,5 +1,5 @@
 """
-StageContract validator — v2.2
+StageContract validator — v2.3
 
 Usage:
   python _config/stage-contract.py --stage <stage-name>
@@ -33,7 +33,7 @@ from pathlib import Path
 
 ALL_STAGES = ["00-intake", "01-research", "02-analysis", "03-output"]
 
-REQUIRED_FRONTMATTER_BASE = ["status", "operator_approved", "stage"]
+REQUIRED_FRONTMATTER_BASE = ["status", "operator_approved", "stage", "domain"]
 
 STAGE_OUTPUT_REQUIREMENTS = {
     "00-intake":   ["output/problem.md"],
@@ -144,7 +144,11 @@ def validate_stage(stage: str) -> list[str]:
                 )
             fm = load_frontmatter(sources_path)
             declared = fm.get("sources_count")
-            if declared is not None and declared != count:
+            if declared is None:
+                errors.append(
+                    "sources.md: frontmatter sources_count is missing (required for gate_01 cross-check)"
+                )
+            elif declared != count:
                 errors.append(
                     f"sources.md: frontmatter sources_count={declared} "
                     f"does not match table row count={count}"
@@ -155,8 +159,8 @@ def validate_stage(stage: str) -> list[str]:
         if risk_path.exists():
             fm = load_frontmatter(risk_path)
             risk_tier = fm.get("risk_tier")
-            if risk_tier is None:
-                errors.append("risk.md: risk_tier is not set (gate_02 requires a value)")
+            if not risk_tier:
+                errors.append("risk.md: risk_tier is not set (gate_02 requires a non-empty value)")
             elif risk_tier in HIGH_RISK_TIERS:
                 if fm.get("risk_check_passed") is not True:
                     errors.append(
@@ -216,7 +220,7 @@ def assess_command(command_line: str) -> tuple[str, str]:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Markdown Architecture stage contract validator v2.2"
+        description="Markdown Architecture stage contract validator v2.3"
     )
     parser.add_argument(
         "--stage",
