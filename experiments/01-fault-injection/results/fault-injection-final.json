@@ -1,0 +1,2880 @@
+{
+  "iterations_requested": 200,
+  "runs_observed_in_db": 126,
+  "db_silent_iterations": 74,
+  "delay_range": [
+    0.05,
+    0.2
+  ],
+  "seed": 42,
+  "database_url": "postgresql://ma:***@localhost:5432/markdown_arch",
+  "distribution": {
+    "empty": 74,
+    "ingest": 4,
+    "gate": 2,
+    "complete": 120,
+    "UNEXPECTED": 0
+  },
+  "unexpected_runs": [],
+  "verdict": "PASS",
+  "runs": [
+    {
+      "label": "1",
+      "delay": 0.14591401976868257,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "2",
+      "delay": 0.05375161328340004,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "3",
+      "delay": 0.0912543977553679,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "4",
+      "delay": 0.08348161072232342,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "5",
+      "delay": 0.16047068212460186,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "6",
+      "delay": 0.15150492311343672,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "7",
+      "delay": 0.18382693515572684,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "8",
+      "delay": 0.06304082489441243,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "9",
+      "delay": 0.11328827295279058,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "10",
+      "delay": 0.05446958291571055,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "11",
+      "delay": 0.0827956962205405,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "12",
+      "delay": 0.12580329321550437,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "13",
+      "delay": 0.053980395452579544,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ]
+      ],
+      "db_receipts": 0,
+      "db_class": "ingest"
+    },
+    {
+      "label": "14",
+      "delay": 0.07982564760299728,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "15",
+      "delay": 0.1474826656669285,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "16",
+      "delay": 0.1317412220904825,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "17",
+      "delay": 0.08306609330610451,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "18",
+      "delay": 0.1383898525813863,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "19",
+      "delay": 0.17141456850167403,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "20",
+      "delay": 0.05097481395170916,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "21",
+      "delay": 0.1708728877749212,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ]
+      ],
+      "db_receipts": 0,
+      "db_class": "ingest"
+    },
+    {
+      "label": "22",
+      "delay": 0.15472090924823406,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "23",
+      "delay": 0.10103757747769879,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "24",
+      "delay": 0.07332192497176723,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "25",
+      "delay": 0.1935819608310172,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "26",
+      "delay": 0.10048918176689403,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "27",
+      "delay": 0.0639118765070222,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "28",
+      "delay": 0.0645074565250196,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "29",
+      "delay": 0.17712415495211897,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "30",
+      "delay": 0.14055890470503368,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "31",
+      "delay": 0.17106924099115706,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "32",
+      "delay": 0.1594597680040727,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "33",
+      "delay": 0.13043421371820513,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "34",
+      "delay": 0.1959673645969056,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "35",
+      "delay": 0.10678015658125303,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "36",
+      "delay": 0.13280609469098406,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "37",
+      "delay": 0.17441069963794925,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "38",
+      "delay": 0.14277796285463693,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "39",
+      "delay": 0.17925603504661658,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "40",
+      "delay": 0.13660282178851432,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "41",
+      "delay": 0.15568577543223855,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "42",
+      "delay": 0.05687365754834933,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ]
+      ],
+      "db_receipts": 0,
+      "db_class": "gate"
+    },
+    {
+      "label": "43",
+      "delay": 0.08418474134773204,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "44",
+      "delay": 0.09340819454031608,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "45",
+      "delay": 0.06196879653854413,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "46",
+      "delay": 0.08491863295415453,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "47",
+      "delay": 0.06515021441145938,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "48",
+      "delay": 0.09169604046651383,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "49",
+      "delay": 0.14535266663966004,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "50",
+      "delay": 0.10472482684551265,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "51",
+      "delay": 0.10552714506753241,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "52",
+      "delay": 0.08142605461572316,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "53",
+      "delay": 0.09004667330736701,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "54",
+      "delay": 0.19049818815687414,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "55",
+      "delay": 0.14720530778698904,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "56",
+      "delay": 0.14136965085004824,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "57",
+      "delay": 0.07567079722971455,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "58",
+      "delay": 0.1593690196925524,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ]
+      ],
+      "db_receipts": 0,
+      "db_class": "ingest"
+    },
+    {
+      "label": "59",
+      "delay": 0.07451037406428926,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "60",
+      "delay": 0.10691831626364717,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "61",
+      "delay": 0.19842850259548933,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "62",
+      "delay": 0.14599996397811393,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "63",
+      "delay": 0.13354246156619695,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "64",
+      "delay": 0.15269213764848122,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "65",
+      "delay": 0.17642778802847148,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "66",
+      "delay": 0.16639998673193673,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "67",
+      "delay": 0.08435721079461567,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "68",
+      "delay": 0.054815036585605666,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "69",
+      "delay": 0.0973179572088623,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "70",
+      "delay": 0.09016113139635543,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "71",
+      "delay": 0.08164742653794899,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "72",
+      "delay": 0.1914364571502582,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "73",
+      "delay": 0.18145514397090035,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "74",
+      "delay": 0.0972016821197717,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "75",
+      "delay": 0.14831579979423204,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "76",
+      "delay": 0.10934478515909965,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "77",
+      "delay": 0.18718213846108156,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "78",
+      "delay": 0.11882777788810983,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "79",
+      "delay": 0.08973202497470788,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "80",
+      "delay": 0.08699412615409752,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ]
+      ],
+      "db_receipts": 0,
+      "db_class": "ingest"
+    },
+    {
+      "label": "81",
+      "delay": 0.1342052201244726,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "82",
+      "delay": 0.0894112412784403,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "83",
+      "delay": 0.13768789853353108,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "84",
+      "delay": 0.18467343254037155,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "85",
+      "delay": 0.1099100757710596,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "86",
+      "delay": 0.0828981138735925,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "87",
+      "delay": 0.19963064097426658,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "88",
+      "delay": 0.1264289440514697,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "89",
+      "delay": 0.06363641182606909,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "90",
+      "delay": 0.057067456313710185,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "91",
+      "delay": 0.06644736955259888,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "92",
+      "delay": 0.14411690625546353,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "93",
+      "delay": 0.16881190465444462,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "94",
+      "delay": 0.11332399501995262,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "95",
+      "delay": 0.05952915592279358,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "96",
+      "delay": 0.10724289297598052,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "97",
+      "delay": 0.19941820703601454,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "98",
+      "delay": 0.12936715176487057,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "99",
+      "delay": 0.19566175664204277,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "100",
+      "delay": 0.17911695533517474,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "101",
+      "delay": 0.05172215329142295,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "102",
+      "delay": 0.15810827290402923,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "103",
+      "delay": 0.15225655535398624,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "104",
+      "delay": 0.1305455495613193,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "105",
+      "delay": 0.09002377849288143,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "106",
+      "delay": 0.14614426978697123,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "107",
+      "delay": 0.06673282603938147,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "108",
+      "delay": 0.11521478760036576,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "109",
+      "delay": 0.11805855594938099,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "110",
+      "delay": 0.19307238912816205,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "111",
+      "delay": 0.1813779410567291,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "112",
+      "delay": 0.08950835761266362,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "113",
+      "delay": 0.12508791695754476,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "114",
+      "delay": 0.0767977820795197,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "115",
+      "delay": 0.18689417590172308,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "116",
+      "delay": 0.18057778547551506,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "117",
+      "delay": 0.09476671871729495,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ]
+      ],
+      "db_receipts": 0,
+      "db_class": "gate"
+    },
+    {
+      "label": "118",
+      "delay": 0.1458424242299008,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "119",
+      "delay": 0.14134553171572586,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "120",
+      "delay": 0.07292589028244523,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "121",
+      "delay": 0.1643766200112727,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "122",
+      "delay": 0.13090685451794387,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "123",
+      "delay": 0.16679397179458377,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "124",
+      "delay": 0.12955305082927665,
+      "killed": false,
+      "completed_naturally": true,
+      "exit_code": 0,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "125",
+      "delay": 0.05008578441919153,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    },
+    {
+      "label": "126",
+      "delay": 0.09862340855070098,
+      "killed": true,
+      "completed_naturally": false,
+      "exit_code": -9,
+      "db_events": [
+        [
+          "ingest",
+          "passed"
+        ],
+        [
+          "gate_00",
+          "passed"
+        ],
+        [
+          "receipt",
+          "passed"
+        ]
+      ],
+      "db_receipts": 1,
+      "db_class": "complete"
+    }
+  ]
+}

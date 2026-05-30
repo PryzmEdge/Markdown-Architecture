@@ -23,3 +23,19 @@ Thumbs.db
 .idea/
 *.swp
 .gstack/
+
+# Transient receipts from workflow runs (the runnable proof + experiment harnesses
+# create these on every invocation). Committed receipts for a real canonical run
+# would belong under stages/03-output/output/receipts/ per the blueprint.
+stages/00-intake/output/receipts/
+
+# Experiment 03 per-iteration synthesis outputs — bulk noise; the aggregate JSON
+# summary in experiments/03-model-swap/results/model-swap-results.json is the
+# signal worth keeping.
+experiments/03-model-swap/results/outputs/
+
+# Experiment 04 LLM consumer + Pandoc artifacts are reproducible from the source
+# synthesis.md; don't bloat the repo. The verification logic is what matters.
+experiments/04-consumer-swap/results/synthesis.html
+experiments/04-consumer-swap/results/synthesis.pdf
+experiments/04-consumer-swap/results/summary-*.txt
