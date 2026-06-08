@@ -1,3 +1,13 @@
+# --- Secrets: NEVER commit these to a public repo ---
+# A leaked API key in a public repo is scraped by bots within minutes and
+# can run up real charges. This is the most important block in this file.
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+.anthropic/
+
 # Graphify generated output
 graphify-out/
 
