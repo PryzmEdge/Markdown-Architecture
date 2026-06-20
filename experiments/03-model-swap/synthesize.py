@@ -195,7 +195,7 @@ class ClaudeBackend:
             sys.exit("anthropic SDK not installed: pip install anthropic")
         if not os.environ.get("ANTHROPIC_API_KEY"):
             sys.exit("ANTHROPIC_API_KEY not set — synthesize.py cannot call claude.")
-        self.client = anthropic.Anthropic()
+        self.client = anthropic.Anthropic(max_retries=5)
         self.model = model
         self.name = f"claude:{model}"
 

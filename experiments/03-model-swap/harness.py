@@ -205,23 +205,39 @@ def main():
                 out_path = RESULTS_DIR / "outputs" / slug
                 out_path.parent.mkdir(parents=True, exist_ok=True)
                 meta = run_one(model, mock_behavior, out_path)
+                if "error" in meta:
+                    # API/call failure — NOT a gate failure. Record and exclude
+                    # from rate denominators so a failed call can't masquerade
+                    # as a 0% gate-pass result.
+                    cell_runs.append({"status": "error", "error": meta["error"],
+                                      "meta": meta, "eval": None})
+                    continue
                 eval_ = evaluate_one(out_path, gate)
-                cell_runs.append({"meta": meta, "eval": eval_})
+                cell_runs.append({
+                    "status": "gate_passed" if eval_["gate_passed"] else "gate_failed",
+                    "meta": meta, "eval": eval_,
+                })
 
             n = len(cell_runs)
-            pass_rate = sum(r["eval"]["gate_passed"] for r in cell_runs) / n
-            contradiction_rate = sum(r["eval"]["contradiction_detected"]
-                                     for r in cell_runs) / n
-            override_rate = sum(r["eval"]["operator_override_implied"]
-                                for r in cell_runs) / n
+            ok_runs = [r for r in cell_runs if r["status"] != "error"]
+            n_ok = len(ok_runs)
+            n_error = n - n_ok
+            sample_errors = [r["error"] for r in cell_runs if r["status"] == "error"][:3]
+            # Rates over SUCCESSFUL runs only; null (not 0.0) when none succeeded.
+            gate_pass_rate = (sum(r["eval"]["gate_passed"] for r in ok_runs) / n_ok) if n_ok else None
+            contradiction_rate = (sum(r["eval"]["contradiction_detected"] for r in ok_runs) / n_ok) if n_ok else None
+            override_rate = (sum(r["eval"]["operator_override_implied"] for r in ok_runs) / n_ok) if n_ok else None
             cells.append({
                 "model": model,
                 "gate": gate,
                 "mock_behavior": mock_behavior,
                 "n": n,
-                "gate_pass_rate": pass_rate,
+                "n_ok": n_ok,
+                "n_error": n_error,
+                "gate_pass_rate": gate_pass_rate,
                 "contradiction_detection_rate": contradiction_rate,
                 "operator_override_rate": override_rate,
+                "sample_errors": sample_errors,
             })
 
     # Axis A: hold gate fixed at "normal", look at variance across models
@@ -235,29 +251,49 @@ def main():
     fm_cells = [c for c in cells if c["model"] == first_model]
     axis_b_pass = [(c["gate"], c["gate_pass_rate"]) for c in fm_cells]
 
+    total_runs = sum(c["n"] for c in cells)
+    total_errors = sum(c["n_error"] for c in cells)
+
+    interpretation_notes = [
+        "If axis A is flat and axis B is steep → thesis supported.",
+        "If axis A is steep and axis B is flat → thesis falsified.",
+    ]
+    if args.mode == "mock":
+        interpretation_notes.append(
+            "Mock mode does not exercise the real thesis; rerun with --mode claude "
+            "on a machine with $ANTHROPIC_API_KEY for actual data."
+        )
+    if total_errors > 0:
+        interpretation_notes.append(
+            f"WARNING: {total_errors}/{total_runs} runs errored (API/call failures); "
+            "rates are over SUCCESSFUL runs only. Cells with n_error>0 are under-sampled "
+            "and MUST be re-run before the result is trustworthy."
+        )
+
     summary = {
         "mode": args.mode,
         "iterations_per_cell": args.iterations,
+        "total_runs": total_runs,
+        "total_errors": total_errors,
         "cells": cells,
         "axis_A_model_vs_pass_rate (gate=normal)": axis_a_pass,
         "axis_A_model_vs_contradiction_rate (gate=normal)": axis_a_contradiction,
         "axis_B_gate_vs_pass_rate (model={})".format(first_model): axis_b_pass,
-        "interpretation_notes": [
-            "If axis A is flat and axis B is steep → thesis supported.",
-            "If axis A is steep and axis B is flat → thesis falsified.",
-            "Mock mode does not exercise the real thesis; rerun with --mode claude on a machine with $ANTHROPIC_API_KEY for actual data.",
-        ],
+        "interpretation_notes": interpretation_notes,
     }
 
     Path(args.out).write_text(json.dumps(summary, indent=2))
     print(f"Wrote {args.out}")
     print()
     print("=== Cell grid ===")
-    print(f"  {'model':24s} {'gate':12s} {'pass':>6s} {'cntr':>6s} {'ovrd':>6s}")
+    def cell_fmt(x):
+        return f"{x:5.2f}" if x is not None else "  ERR"
+
+    print(f"  {'model':24s} {'gate':12s} {'pass':>6s} {'cntr':>6s} {'ovrd':>6s} {'ok/n':>7s} {'err':>4s}")
     for c in cells:
         print(f"  {c['model']:24s} {c['gate']:12s} "
-              f"{c['gate_pass_rate']:5.2f}  {c['contradiction_detection_rate']:5.2f}  "
-              f"{c['operator_override_rate']:5.2f}")
+              f"{cell_fmt(c['gate_pass_rate'])}  {cell_fmt(c['contradiction_detection_rate'])}  "
+              f"{cell_fmt(c['operator_override_rate'])}  {c['n_ok']:>2d}/{c['n']:<2d}  {c['n_error']:>4d}")
     print()
     print(f"Axis A (model vs gate-pass, gate=normal): {axis_a_pass}")
     print(f"Axis B (gate vs gate-pass, model={first_model}): {axis_b_pass}")
