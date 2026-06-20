@@ -8,7 +8,7 @@
 > - **Corrections C1 / C2 were preventive and proved moot:** the claims they guard against were never present in `docs/v10-draft.md` (verified by grep at `ec2c4dc`). Nothing was applied; they remain as guard-rails only.
 > Anchors are given by **Part / heading** (stable), not line number — line numbers drift, and the assembly map's were already stale at HEAD.
 
-**Disposition** (verified against HEAD `ec2c4dc`; agent to confirm anchors + fill SHAs before committing this file):
+**Disposition**:
 
 | Block | Source(s) | Landed — body anchor | Appendix group | Commit |
 |---|---|---|---|---|
