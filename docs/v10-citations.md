@@ -1,8 +1,32 @@
-# v10 Citations — Staged Insertions
+# v10 Citations — Staged Insertions  ·  SUPERSEDED
 
-**Status**: Proposal — no edits landed. Staged feeder for `docs/v10-draft.md`, following the `v10-tier2-rewrites.md` pattern. Each block names its target Part, the existing citation it sits beside, the proposed text, a caveat where the source warrants one, and the full reference inline. Apply block by block; place each reference into the relevant themed group in the Appendix at merge time.
+> **Status — SUPERSEDED (retained for provenance; do not re-apply).** Superseded 2026-06-20.
+> This was the staged citation feeder for `docs/v10-draft.md`. Its contents have landed; it is kept only as the provenance trail.
+> - **Body insertions (Blocks A–F):** landed at `ec2c4dc`.
+> - **Appendix reference groups + Experiment-03 fix:** landed at `50ec6c2` / `df7cefb`.
+> - **Block C here was superseded by `block_C_reconciled.md` before merge** — do not apply the original single-subsection Block C below.
+> - **Corrections C1 / C2 were preventive and proved moot:** the claims they guard against were never present in `docs/v10-draft.md` (verified by grep at `ec2c4dc`). Nothing was applied; they remain as guard-rails only.
+> Anchors are given by **Part / heading** (stable), not line number — line numbers drift, and the assembly map's were already stale at HEAD.
 
-**Provenance note**: every citation below was verified against the primary source. Two items are *corrections* of claims from external summaries that did not survive verification; they are marked [CORRECTION] and must not be cited in their original form.
+**Disposition** (verified against HEAD `ec2c4dc`; agent to confirm anchors + fill SHAs before committing this file):
+
+| Block | Source(s) | Landed — body anchor | Appendix group | Commit |
+|---|---|---|---|---|
+| A | Ning et al., *Code as Agent Harness* (2605.18747) | Part 1 — The Five-Layer Stack | Agent reliability & long-horizon execution | body `ec2c4dc` · appx `50ec6c2` |
+| B | Eslami & Yu (2603.10779) | Part 3 — beside Ramadge–Wonham | Agent reliability & long-horizon execution | body `ec2c4dc` · appx `50ec6c2` |
+| C (reconciled) | Sinha (2509.09677) · METR (2503.14499) · Cemri/MAST (2503.13657) | Part 3 — compounding math + subsection "Reliability Is a Property of the Gates, Not the Model" | Agent reliability & long-horizon execution | body `ec2c4dc` · appx `50ec6c2` |
+| D | Liu/*Lost in the Middle* (2307.03172) · Modarressi/NoLiMa (2502.05167) | Part 4 — The Memory Hierarchy | Long-context behavior | body `ec2c4dc` · appx `50ec6c2` |
+| E | Stanford DEL token study · Anthropic multi-agent blog | Part 22 — AI Gateway & Cost Governance | Agent token economics | body `ec2c4dc` · appx `50ec6c2` |
+| F | Shinn/Reflexion (2303.11366) · Wang/CodeAct (2402.01030) | Part 3/10 — beside FIDES/CaMeL | Agent reliability & long-horizon execution (folded) | body `ec2c4dc` · appx `50ec6c2` |
+| [CORRECTION] C1 | inverted Anthropic orchestrator claim | not present in draft (grep `ec2c4dc`) → **no-op, moot** | — (do not introduce) | n/a |
+| [CORRECTION] C2 | DeepMind/Kim counts (Kim et al., 2512.08296) | "260 configs / six benchmarks" not present → **no-op, moot** | Kim **uncited → no Appendix entry** (no-orphan); 17.2× citable with 180 configs / 4 benchmarks *if* added | n/a |
+| [FIX] Exp-03 | `claude-opus-4-7 → claude-opus-4-8` (Axis A) | `docs/thesis-experiments.md`, Exp 03 — spec only, not yet run | — | `df7cefb` |
+
+**Provenance note (updated).** Every reference below was verified against its primary source at staging time. Open item: the Sinha author list landed in the draft as a literal `[TODO: complete author list]` and still needs completing against the arXiv record before the bibliography is final.
+
+---
+
+*Original feeder content retained below, unchanged, as the provenance record. Do not re-apply.*
 
 -----
 
