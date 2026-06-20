@@ -11,15 +11,23 @@ import os
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "_config"))
-from stage_contract import (
-    assess_command,
-    RISK_RESULT_BLOCKED,
-    RISK_RESULT_WARN,
-    RISK_RESULT_OK,
-    count_sources_in_table,
-    load_frontmatter,
+import importlib.util
+
+# _config/stage-contract.py has a hyphen, so it cannot be imported by module name
+# on any OS. Load it by file path (the validator and Makefile invoke it by path as
+# a script — the filename stays hyphenated on purpose).
+_SPEC = importlib.util.spec_from_file_location(
+    "stage_contract", Path(__file__).parent.parent / "_config" / "stage-contract.py"
 )
+stage_contract = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(stage_contract)
+
+assess_command = stage_contract.assess_command
+RISK_RESULT_BLOCKED = stage_contract.RISK_RESULT_BLOCKED
+RISK_RESULT_WARN = stage_contract.RISK_RESULT_WARN
+RISK_RESULT_OK = stage_contract.RISK_RESULT_OK
+count_sources_in_table = stage_contract.count_sources_in_table
+load_frontmatter = stage_contract.load_frontmatter
 
 
 class TestAssessCommand:
@@ -95,6 +103,10 @@ class TestValidateStageWithTempDirs:
 
     def _write_md(self, path: Path, frontmatter: dict, body: str = "body"):
         import yaml
+        # `domain` is a required base field (added to the validator in 73bf57b).
+        # Default it for every temp-dir fixture so a required-field check can't
+        # re-expose this gap; explicit values in `frontmatter` still override.
+        frontmatter = {"domain": "architecture", **frontmatter}
         path.parent.mkdir(parents=True, exist_ok=True)
         lines = ["---"]
         for k, v in frontmatter.items():
@@ -108,7 +120,7 @@ class TestValidateStageWithTempDirs:
         self._write_md(stage / "CONTEXT.md", {"status": "approved", "stage": "00-intake", "operator_approved": True})
         self._write_md(stage / "output" / "problem.md", {"status": "approved", "stage": "00-intake", "operator_approved": True})
 
-        from stage_contract import validate_stage
+        validate_stage = stage_contract.validate_stage
         errors = validate_stage("00-intake")
         assert errors == []
 
@@ -118,7 +130,7 @@ class TestValidateStageWithTempDirs:
         self._write_md(stage / "CONTEXT.md", {"status": "approved", "stage": "00-intake", "operator_approved": True})
         self._write_md(stage / "output" / "problem.md", {"status": "draft", "stage": "00-intake", "operator_approved": False})
 
-        from stage_contract import validate_stage
+        validate_stage = stage_contract.validate_stage
         errors = validate_stage("00-intake")
         assert any("operator_approved" in e for e in errors)
 
@@ -132,7 +144,7 @@ class TestValidateStageWithTempDirs:
             "operator_approved": True, "risk_tier": "High", "risk_check_passed": False
         })
 
-        from stage_contract import validate_stage
+        validate_stage = stage_contract.validate_stage
         errors = validate_stage("02-analysis")
         assert any("risk_check_passed" in e for e in errors)
 
@@ -146,7 +158,7 @@ class TestValidateStageWithTempDirs:
             "operator_approved": True, "risk_tier": "High", "risk_check_passed": True
         })
 
-        from stage_contract import validate_stage
+        validate_stage = stage_contract.validate_stage
         errors = validate_stage("02-analysis")
         assert errors == []
 
@@ -157,7 +169,7 @@ class TestValidateStageWithTempDirs:
         self._write_md(stage / "output" / "final-report.md", {"status": "approved", "stage": "03-output", "operator_approved": True})
         # No receipts dir
 
-        from stage_contract import validate_stage
+        validate_stage = stage_contract.validate_stage
         errors = validate_stage("03-output")
         assert any("receipt" in e for e in errors)
 
@@ -171,6 +183,6 @@ class TestValidateStageWithTempDirs:
         receipts.mkdir(parents=True)
         (receipts / "20260524T000000Z.json").write_text(json.dumps({"receipt_id": "test"}))
 
-        from stage_contract import validate_stage
+        validate_stage = stage_contract.validate_stage
         errors = validate_stage("03-output")
         assert errors == []
