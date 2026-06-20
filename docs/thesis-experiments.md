@@ -77,7 +77,7 @@ Each experiment is small enough to ship as a self-contained harness with code, f
 
 **Run status.** The harness runs end-to-end in mock mode (deterministic stub LLM — validates plumbing, not model behavior); the real-model run is pending — no `ANTHROPIC_API_KEY` in this container, run on a machine with a key (`--mode claude`).
 
-**Outputs.** `experiments/03-model-swap/results.csv` (or `.json`) with 6 cells of 20 runs each; `README.md` with the two correlation analyses.
+**Outputs.** `experiments/03-model-swap/results/model-swap-results.json` with 9 cells of 20 runs each; `README.md` with the two correlation analyses.
 
 **Effort.** 1-2 days + LLM API costs (~$20-40 depending on model mix and prompt size).
 
