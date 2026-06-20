@@ -575,6 +575,23 @@ RLS provides coarse-grained row filtering. It is not a capability system: no unf
 - Materialize / Feldera — differential dataflow; incremental SQL maintenance.
 - Mason, T. (2026). *The Missing Memory Hierarchy.* arXiv:2603.09023.
 
+### Agent reliability and long-horizon execution
+- Ning, X., Tieu, K., Fu, D., Wei, T., Li, Z., Bei, Y., et al. (2026). *Code as Agent Harness: Toward Executable, Verifiable, and Stateful Agent Systems.* arXiv:2605.18747.
+- Eslami, A. & Yu, J. (2026). *A Control-Theoretic Foundation for Agentic Systems.* arXiv:2603.10779.
+- Sinha, A., Arun, [TODO: complete author list], & Goel (2026). *The Illusion of Diminishing Returns: Measuring Long-Horizon Execution in LLMs.* arXiv:2509.09677 (ICLR 2026).
+- METR (2025). *Measuring AI Ability to Complete Long Tasks.* arXiv:2503.14499.
+- Cemri, M. et al. (2025). *Why Do Multi-Agent LLM Systems Fail?* (MAST) arXiv:2503.13657.
+- Shinn, N. et al. (2023). *Reflexion: Language Agents with Verbal Reinforcement Learning.* NeurIPS 2023. arXiv:2303.11366.
+- Wang, X. et al. (2024). *Executable Code Actions Elicit Better LLM Agents.* (CodeAct) ICML 2024. arXiv:2402.01030.
+
+### Long-context behavior
+- Liu, N.F. et al. (2024). *Lost in the Middle: How Language Models Use Long Contexts.* TACL 12:157–173. arXiv:2307.03172.
+- Modarressi, A. et al. (2025). *NoLiMa: Long-Context Evaluation Beyond Literal Matching.* ICML 2025. arXiv:2502.05167.
+
+### Agent token economics
+- Stanford Digital Economy Lab (2025). *How Do AI Agents Spend Your Money? Analyzing and Predicting Token Consumption in Agentic Coding Tasks.*
+- Anthropic (2025). *How we built our multi-agent research system.* (engineering blog.)
+
 ---
 
 *v10-draft.md — apply ADR-001 through ADR-005 for architectural decision rationale. See docs/adr/.*
