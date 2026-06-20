@@ -578,7 +578,7 @@ RLS provides coarse-grained row filtering. It is not a capability system: no unf
 ### Agent reliability and long-horizon execution
 - Ning, X., Tieu, K., Fu, D., Wei, T., Li, Z., Bei, Y., et al. (2026). *Code as Agent Harness: Toward Executable, Verifiable, and Stateful Agent Systems.* arXiv:2605.18747.
 - Eslami, A. & Yu, J. (2026). *A Control-Theoretic Foundation for Agentic Systems.* arXiv:2603.10779.
-- Sinha, A., Arun, [TODO: complete author list], & Goel (2026). *The Illusion of Diminishing Returns: Measuring Long-Horizon Execution in LLMs.* arXiv:2509.09677 (ICLR 2026).
+- Sinha, A., Arun, A., Goel, S., Staab, S., & Geiping, J. (2026). *The Illusion of Diminishing Returns: Measuring Long-Horizon Execution in LLMs.* arXiv:2509.09677 (ICLR 2026).
 - METR (2025). *Measuring AI Ability to Complete Long Tasks.* arXiv:2503.14499.
 - Cemri, M. et al. (2025). *Why Do Multi-Agent LLM Systems Fail?* (MAST) arXiv:2503.13657.
 - Shinn, N. et al. (2023). *Reflexion: Language Agents with Verbal Reinforcement Learning.* NeurIPS 2023. arXiv:2303.11366.
