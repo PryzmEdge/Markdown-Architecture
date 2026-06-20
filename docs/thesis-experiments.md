@@ -64,7 +64,7 @@ Each experiment is small enough to ship as a self-contained harness with code, f
 
 1. **Synthesis agent** (`experiments/03-model-swap/synthesize.py`) — takes a `brief.md` + `sources.md` + `contradictions.md` as input, calls an LLM, emits `synthesis.md` with the required Stage 02 frontmatter and sections.
 2. **Gate validator** — reuse `_config/stage-contract.py --stage 02-analysis` unchanged.
-3. **Two axes.** Axis A holds gates fixed and swaps the model across `claude-haiku-4-5`, `claude-sonnet-4-6`, `claude-opus-4-7`. Axis B holds the model fixed (Sonnet) and varies gate strictness: strict (`risk_check_passed` required, ≥5 sources), normal (current rules), permissive (gates disabled).
+3. **Two axes.** Axis A holds gates fixed and swaps the model across `claude-haiku-4-5`, `claude-sonnet-4-6`, `claude-opus-4-8`. Axis B holds the model fixed (Sonnet) and varies gate strictness: strict (`risk_check_passed` required, ≥5 sources), normal (current rules), permissive (gates disabled).
 4. **Metrics.** Gate-pass rate, contradiction-detection rate (does the synthesis correctly identify a salted contradiction in the test fixture?), operator-override frequency over a 20-run sample per cell.
 
 **Falsification.** If Axis A metrics correlate strongly with model size (Opus dominates Haiku by a wide margin), the thesis is weaker than claimed.
