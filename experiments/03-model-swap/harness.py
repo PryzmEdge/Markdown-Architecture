@@ -10,7 +10,7 @@ Hypothesis (from docs/thesis-experiments.md):
 Method:
     Run a Stage 02 synthesis agent N times per cell across the grid:
 
-        Axis A: model       ∈ {haiku-4-5, sonnet-4-6, opus-4-7}
+        Axis A: model       ∈ {haiku-4-5, sonnet-4-6, opus-4-8}
         Axis B: gate strict ∈ {permissive, normal, strict}
 
     For each output synthesis.md, compute three metrics:
@@ -45,7 +45,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 FIXTURES = Path(__file__).parent / "fixtures"
 RESULTS_DIR = Path(__file__).parent / "results"
 
-DEFAULT_MODELS = ["claude-haiku-4-5", "claude-sonnet-4-6", "claude-opus-4-7"]
+DEFAULT_MODELS = ["claude-haiku-4-5", "claude-sonnet-4-6", "claude-opus-4-8"]
 DEFAULT_GATES = ["permissive", "normal", "strict"]
 
 SALTED_PROBE_AUTHOR = "Yamashita"
@@ -90,6 +90,10 @@ def gate_normal(synthesis_text: str) -> dict:
 
 def gate_strict(synthesis_text: str) -> dict:
     """Strict: normal + body must include all 5 required sections + non-trivial counter-arg."""
+    # TODO(exp-03): doc spec says "strict" Axis-B = ≥5 sources. NOT implemented:
+    # gate_strict does no source count; the real stage-contract.py enforces ≥3.
+    # Run real models at the current gates first, inspect gate-pass / contradiction
+    # rates, THEN decide if ≥5 is scientifically load-bearing or just theater.
     r = gate_normal(synthesis_text)
     if not r["passed"]:
         return r
