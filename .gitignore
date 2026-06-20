@@ -39,10 +39,9 @@ Thumbs.db
 # would belong under stages/03-output/output/receipts/ per the blueprint.
 stages/00-intake/output/receipts/
 
-# Experiment 03 per-iteration synthesis outputs — bulk noise; the aggregate JSON
-# summary in experiments/03-model-swap/results/model-swap-results.json is the
-# signal worth keeping.
-experiments/03-model-swap/results/outputs/
+# Experiment 03 run artifacts (synthesis outputs + tabulated results) — regenerable;
+# the repo keeps method + fixtures, not run output.
+experiments/03-model-swap/results/
 
 # Experiment 04 LLM consumer + Pandoc artifacts are reproducible from the source
 # synthesis.md; don't bloat the repo. The verification logic is what matters.
