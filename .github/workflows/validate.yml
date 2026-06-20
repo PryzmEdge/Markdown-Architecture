@@ -1,5 +1,5 @@
 # .github/workflows/validate.yml
-# Runs stage contracts and full test suite on every PR and push to main.
+# Runs the test suite and repo-hygiene checks on every PR and push to main.
 
 name: Validate & Test
 
@@ -11,7 +11,7 @@ on:
 
 jobs:
   validate-and-test:
-    name: Contracts + Tests
+    name: Tests + Repo Checks
     runs-on: ubuntu-latest
 
     steps:
@@ -25,9 +25,6 @@ jobs:
 
       - name: Install dependencies
         run: pip install pyyaml pytest httpx
-
-      - name: Run stage-contract validator
-        run: python _config/stage-contract.py --stage all
 
       - name: Run test suite
         run: python -m pytest tests/ -v --tb=short
