@@ -83,6 +83,8 @@ eu_ai_act_enforcement_date: "2026-08-02"
 
 **Execution is never in the markdown.** It lives in Pandoc, panflute filters, Codebraid, shell wrappers, AI agent runtimes, YAML parsers, and MCP servers.
 
+> This layered separation — inert artifacts, a model operating inside a surrounding software harness, and the execution substrate beneath — is the organizing frame of a 2026 survey from UIUC, Meta, and Stanford, *Code as Agent Harness* (Ning et al., arXiv:2605.18747). It defines an agent harness as “the software layer that surrounds an LLM with tools, APIs, sandboxes, memory, validators, permission boundaries, execution loops, and feedback channels, thereby turning a stateless model into a functional agent,” and organizes agentic systems into three layers — harness interface, harness mechanisms, and scaling the harness — that map onto the stack described here. The survey *frames* this view; it is a synthesis of existing systems, not an experimental result, and remains a non-peer-reviewed preprint.
+
 **Closest prior work:** DBOS (Stonebraker, Zaharia, Madden — MIT/Stanford) is the most direct expression of "OS on a database"; it runs on Linux/Firecracker and provides durable workflow + native Postgres state + agent SDK integrations. This paper targets personal-scale PKM rather than general OS replacement. If you want a general-purpose durable-workflow-on-Postgres stack without the markdown/CRDT/governance legs, DBOS is the right starting point.
 
 ### Part 1.5 — Intended Use & Out-of-Scope Cases
@@ -149,14 +151,14 @@ Postgres      = state kernel and provenance ledger (NOT OS kernel — see below)
 
 This is the dominant production architecture pattern in 2026.
 
-> *"The architectural fix is to treat the LLM as a probabilistic policy inside a deterministic harness. By inserting deterministic steps — rules, finite state machines, and hard-coded policies — into the workflow, engineers can halt the compounding loss of reliability."*
-
-The math: a 10-step agent chain at 95% per-step accuracy yields **59.9% end-to-end reliability** (0.95¹⁰). One deterministic circuit breaker at a critical step resets reliability for that checkpoint to 100%.
+> Chaining model calls in sequence degrades reliability: each step conditions on the previous step’s output, so errors are inherited rather than cancelled. As a first-order idealization, if each of N steps succeeds independently with probability p, end-to-end success is p^N — a ten-step chain at 95% per-step accuracy yields roughly 60% end-to-end (0.95¹⁰ ≈ 0.599). This independent-error model is a lower-bound intuition, not a measurement. Sinha et al. (arXiv:2509.09677, ICLR 2026) document *self-conditioning*, in which per-step accuracy falls as a trajectory lengthens, so real errors are positively correlated and decay can exceed what p^N predicts; conversely, retries and verification gates raise the effective per-step reliability. METR (arXiv:2503.14499) gives the empirical task-horizon picture, and Cemri et al. (MAST, arXiv:2503.13657) find that multi-step agent failures are driven more by system design and inter-agent misalignment than by base-model quality. The architectural response is to insert deterministic steps — contracts, finite-state checks, hard-coded policies — that halt the compounding loss: a deterministic gate at a critical step resets reliability for that checkpoint.
 
 **Prior art for this pattern.** This mirrors:
 - **Supervisory control of a stochastic plant** (Ramadge–Wonham, 1987): deterministic supervisor gates a non-deterministic plant.
+  - A 2026 control-theoretic treatment makes this lineage explicit: Eslami & Yu (arXiv:2603.10779) model an agentic system as embedded within a feedback control loop and formalize “agency as hierarchical decision authority over the control architecture,” giving an augmented closed-loop representation and explicit design constraints for safety-critical settings. This is the formal complement to the supervisory-control analogy already invoked here — the deterministic gate is a feedback element, not merely a checkpoint.
 - **Temporal / DBOS durable workflows:** deterministic workflow code; non-deterministic activities (LLM calls, tool invocations) are fenced, retried, and logged.
 - **IFC for LLM agents:** FIDES (Microsoft Research, arXiv:2505.23643), CaMeL (Google DeepMind/ETH Zürich, arXiv:2503.18813), RTBAS (CMU, arXiv:2502.08966). All three implement "non-deterministic planner gated by deterministic enforcer" with formal lattice labels.
+  - The principle that the artifact-producing step and the verifying step must not share authority has direct primary-source support beyond the IFC work cited above: Reflexion (Shinn et al., NeurIPS 2023, arXiv:2303.11366) separates Actor, Evaluator, and Self-Reflection roles, and CodeAct (Wang et al., ICML 2024, arXiv:2402.01030) grounds agent actions in executable code checked by the runtime rather than by the model’s own assertion. The *Code as Agent Harness* survey attributes the anti-pattern these avoid — an agent’s biased tests passing its own buggy code — to “circular reasoning” and “mode-collapse” (§4.1.1).
 
 > **Vocabulary alignment:**
 > - "Validator gates" in this paper → IFC enforcement points (cf. FIDES §3.2)
@@ -192,6 +194,12 @@ LLMs are leveraged exclusively during a compile-time generation phase to emit st
 | Schemas (Pydantic/JSON Schema + constrained decoding) | Structured output constraints | High |
 | Hooks (.claude/settings.json) | PreToolUse/PostToolUse callbacks | Deterministic |
 
+### Reliability Is a Property of the Gates, Not the Model
+
+The consequence of the compounding argument above is the claim this paper stakes: end-to-end reliability is dominated by the quality of the gates, not by which model occupies the reasoning slot. A gate that blocks promotion until a deterministic contract passes interrupts error inheritance — it prevents a downstream stage from treating an upstream stage’s mistake as a verified premise. The *Code as Agent Harness* survey (arXiv:2605.18747, §4.1.1) corroborates the mechanism from deployed systems: it describes a test executor that “is a deterministic Python script (not an LLM) which cleanly separates reasoning from execution and grounds the feedback signal in objective program behavior.”
+
+This is a falsifiable claim, and it is designed to be tested directly. Experiment 03 in `docs/thesis-experiments.md` holds the gates fixed and swaps the model across tiers (Axis A), then holds the model fixed and varies gate strictness (Axis B); the thesis predicts roughly flat metrics on Axis A and sharply varying metrics on Axis B, and is falsified if Axis A metrics correlate strongly with model size. That experiment's harness is **built and mock-validated but not yet run with real models** — the Stage 02 synthesis agent exists at `experiments/03-model-swap/synthesize.py`, while the `proof/` pipeline implements only Stage 00 ingestion. The claim is stated here as a prediction with a specified falsification test, not as a demonstrated result.
+
 ---
 
 ## Part 4 — The Memory Hierarchy: LLM Context as Cost-Tier Cache
@@ -199,6 +207,8 @@ LLMs are leveraged exclusively during a compile-time generation phase to emit st
 *(arXiv:2603.09023 — "The Missing Memory Hierarchy: Demand Paging for LLM Context Windows," Tony Mason, March 2026)*
 
 Key measurement: across 857 production sessions and 4.45 million effective input tokens, **21.8% was structural waste**. The Pichay demand-paging system reduced context consumption by up to 93% in production.
+
+> Keeping the active context small is a correctness measure, not only a cost measure. The canonical result (Liu et al., “Lost in the Middle,” TACL 2024) shows a U-shaped accuracy curve in which information placed in the middle of a long context is used least reliably, even by models built for long contexts; stricter follow-ups (NoLiMa, ICML 2025) show many models claiming 128K-token windows dropping below half their short-context accuracy by 32K tokens. Loading only the relevant stage folder, and only the constraints section of the rules, keeps the working context inside the reliable regime.
 
 ### The Full Memory Hierarchy
 
@@ -496,6 +506,8 @@ RLS provides coarse-grained row filtering. It is not a capability system: no unf
 - Alert when `usd_estimated` exceeds stage budget by >10%.
 - WORM receipt storage for audit.
 
+> The cost case for a chokepoint with hard budget bounds is grounded in measured agent economics. The Stanford Digital Economy Lab’s analysis of agentic coding found agentic tasks consuming on the order of 1000× the tokens of plain chat in a controlled setting, with up to 30× variance on identical runs, driven mainly by input (re-sent context) rather than output. The 1000× figure is the controlled-study extreme; the production multiplier is smaller — Anthropic reports multi-agent systems using roughly 15× chat tokens, and practitioner estimates cluster around 5–30× — so the gateway’s budget ceiling should be sized to the production range, with the controlled figure as the worst case it must survive.
+
 ---
 
 ## Part 23 — Scope and Scale
@@ -562,6 +574,23 @@ RLS provides coarse-grained row filtering. It is not a capability system: no unf
 - pg_mentat — Datomic-style Datalog inside PostgreSQL.
 - Materialize / Feldera — differential dataflow; incremental SQL maintenance.
 - Mason, T. (2026). *The Missing Memory Hierarchy.* arXiv:2603.09023.
+
+### Agent reliability and long-horizon execution
+- Ning, X., Tieu, K., Fu, D., Wei, T., Li, Z., Bei, Y., et al. (2026). *Code as Agent Harness: Toward Executable, Verifiable, and Stateful Agent Systems.* arXiv:2605.18747.
+- Eslami, A. & Yu, J. (2026). *A Control-Theoretic Foundation for Agentic Systems.* arXiv:2603.10779.
+- Sinha, A., Arun, A., Goel, S., Staab, S., & Geiping, J. (2026). *The Illusion of Diminishing Returns: Measuring Long-Horizon Execution in LLMs.* arXiv:2509.09677 (ICLR 2026).
+- METR (2025). *Measuring AI Ability to Complete Long Tasks.* arXiv:2503.14499.
+- Cemri, M. et al. (2025). *Why Do Multi-Agent LLM Systems Fail?* (MAST) arXiv:2503.13657.
+- Shinn, N. et al. (2023). *Reflexion: Language Agents with Verbal Reinforcement Learning.* NeurIPS 2023. arXiv:2303.11366.
+- Wang, X. et al. (2024). *Executable Code Actions Elicit Better LLM Agents.* (CodeAct) ICML 2024. arXiv:2402.01030.
+
+### Long-context behavior
+- Liu, N.F. et al. (2024). *Lost in the Middle: How Language Models Use Long Contexts.* TACL 12:157–173. arXiv:2307.03172.
+- Modarressi, A. et al. (2025). *NoLiMa: Long-Context Evaluation Beyond Literal Matching.* ICML 2025. arXiv:2502.05167.
+
+### Agent token economics
+- Stanford Digital Economy Lab (2025). *How Do AI Agents Spend Your Money? Analyzing and Predicting Token Consumption in Agentic Coding Tasks.*
+- Anthropic (2025). *How we built our multi-agent research system.* (engineering blog.)
 
 ---
 

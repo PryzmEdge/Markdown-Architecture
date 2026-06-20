@@ -86,6 +86,41 @@ def load_frontmatter(filepath: Path) -> dict:
     except yaml.YAMLError:
         return {}
 
+def validate_artifact(path: Path) -> list[str]:
+    """Validate a SINGLE artifact file against the base frontmatter contract.
+
+    Mirrors validate_stage's per-file semantics (REQUIRED_FRONTMATTER_BASE +
+    operator_approved is True + the conditional risk gate). It does NOT run
+    stage-level cross-checks (sources_count, required-output sets) — those need
+    a stage directory. Reuses load_frontmatter so behaviour matches --stage.
+    """
+    if not path.exists():
+        return [f"artifact not found: {path}"]
+
+    fm = load_frontmatter(path)
+    if not fm:
+        # load_frontmatter is lenient (returns {} on missing / invalid YAML);
+        # layer a clearer message on top rather than four "missing field" lines.
+        text = path.read_text(encoding="utf-8")
+        if not text.lstrip().startswith("---"):
+            return [f"{path}: missing YAML frontmatter (file must open with '---')"]
+        return [f"{path}: frontmatter is empty or not valid YAML"]
+
+    errors: list[str] = []
+    for field in REQUIRED_FRONTMATTER_BASE:
+        if field not in fm:
+            errors.append(f"missing required field: {field}")
+    if fm.get("operator_approved") is not True:
+        errors.append(
+            f"operator_approved must be the boolean true "
+            f"(got {fm.get('operator_approved')!r})"
+        )
+    if fm.get("risk_tier") in HIGH_RISK_TIERS and fm.get("risk_check_passed") is not True:
+        errors.append(
+            f"risk_tier is {fm.get('risk_tier')!r} but risk_check_passed is not true"
+        )
+    return errors
+
 def count_sources_in_table(filepath: Path) -> int:
     """Count data rows in a Markdown table in sources.md (excludes header + separator)."""
     text = filepath.read_text(encoding="utf-8")
@@ -231,6 +266,11 @@ def main():
         metavar="CMD",
         help="Assess risk level of a shell command string."
     )
+    parser.add_argument(
+        "artifact",
+        nargs="?",
+        help="Path to a single .md artifact to validate (alternative to --stage)."
+    )
     args = parser.parse_args()
 
     # --assess-command mode
@@ -245,6 +285,17 @@ def main():
         else:
             print(f"OK — {msg}")
             sys.exit(0)
+
+    # single-artifact mode — a bare path, no --stage
+    if args.artifact and not args.stage:
+        errors = validate_artifact(Path(args.artifact))
+        if errors:
+            print(f"FAIL — {len(errors)} error(s) in {args.artifact}:")
+            for e in errors:
+                print(f"  ✗ {e}")
+            sys.exit(1)
+        print(f"PASS — {args.artifact} satisfies the artifact contract.")
+        sys.exit(0)
 
     # --stage mode
     if not args.stage:

@@ -58,18 +58,24 @@ Each experiment is small enough to ship as a self-contained harness with code, f
 
 ## Experiment 03 — Model-swap insensitivity
 
+> Note: Experiment 03 exercises a harness-local gate ladder (gate_permissive /
+> gate_normal / gate_strict in harness.py) rather than the production
+> _config/stage-contract.py spine. Results therefore measure gate-strictness
+> sensitivity within the experimental rig; wiring the experiment through the
+> production governance spine is deferred as future work.
+
 **Hypothesis.** End-to-end pipeline reliability is dominated by gate quality, not by which LLM occupies the reasoning slot. Holding gates fixed and swapping the model should produce roughly flat metrics; holding the model fixed and varying gate strictness should produce sharply different metrics.
 
-**Method.** This experiment requires a Stage 02 synthesis agent, which doesn't exist yet in this repo (only Stage 00 ingestion is implemented in `proof/`). The minimum-viable version:
+**Method.** This experiment requires a Stage 02 synthesis agent. It is built at `experiments/03-model-swap/synthesize.py` and validated in mock mode (the `proof/` pipeline itself implements only Stage 00 ingestion). The implemented rig:
 
 1. **Synthesis agent** (`experiments/03-model-swap/synthesize.py`) — takes a `brief.md` + `sources.md` + `contradictions.md` as input, calls an LLM, emits `synthesis.md` with the required Stage 02 frontmatter and sections.
-2. **Gate validator** — reuse `_config/stage-contract.py --stage 02-analysis` unchanged.
-3. **Two axes.** Axis A holds gates fixed and swaps the model across `claude-haiku-4-5`, `claude-sonnet-4-6`, `claude-opus-4-7`. Axis B holds the model fixed (Sonnet) and varies gate strictness: strict (`risk_check_passed` required, ≥5 sources), normal (current rules), permissive (gates disabled).
+2. **Gate validator** — a harness-local gate ladder (`gate_permissive` / `gate_normal` / `gate_strict` in `harness.py`), not the production `_config/stage-contract.py` (see the Methods note above).
+3. **Two axes.** Axis A holds gates fixed and swaps the model across `claude-haiku-4-5`, `claude-sonnet-4-6`, `claude-opus-4-8`. Axis B holds the model fixed (Sonnet) and varies gate strictness: strict (`risk_check_passed` required, ≥5 sources), normal (current rules), permissive (gates disabled).
 4. **Metrics.** Gate-pass rate, contradiction-detection rate (does the synthesis correctly identify a salted contradiction in the test fixture?), operator-override frequency over a 20-run sample per cell.
 
 **Falsification.** If Axis A metrics correlate strongly with model size (Opus dominates Haiku by a wide margin), the thesis is weaker than claimed.
 
-**Container limitation.** No `ANTHROPIC_API_KEY` in this remote container. The harness lands as code + mock LLM + run script. The user runs it on their Mac with a real key.
+**Run status.** The harness runs end-to-end in mock mode (deterministic stub LLM — validates plumbing, not model behavior); the real-model run is pending — no `ANTHROPIC_API_KEY` in this container, run on a machine with a key (`--mode claude`).
 
 **Outputs.** `experiments/03-model-swap/results.csv` (or `.json`) with 6 cells of 20 runs each; `README.md` with the two correlation analyses.
 
@@ -104,7 +110,7 @@ Run order is cheapest-and-most-productive-first. Each experiment is independent;
 
 1. **01 (fault-injection)** — cheapest, exercises the Docker+Postgres infrastructure all four experiments share, and produces a real reliability baseline for the proof.
 2. **02 (replay-determinism)** — productive falsification. We expect failure; the failure pins the ADR-005 gap.
-3. **03 (model-swap)** — biggest lift; requires building the missing Stage 02 synthesis agent. Harness ships ready-to-run; user provides the API key.
+3. **03 (model-swap)** — biggest lift; the synthesis agent + harness are built and mock-validated. Real-model run requires the user's API key.
 4. **04 (consumer-swap)** — half a day; depends on having a real `synthesis.md` from experiment 03 (or a hand-written fixture).
 
 ## What's *not* in scope
