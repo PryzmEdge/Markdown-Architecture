@@ -5,7 +5,7 @@ allowed-tools: Read, Bash(grep:*), Bash(git show:*)
 disable-model-invocation: true
 ---
 
-You are checking whether a citation is safe to use in `docs/v10-draft.md`. The verified citation corpus is `docs/v10-citations.md`. That file — read fresh, right now — is the only authority for what has been verified. Your memory of a prior read is not. Re-ground against the file, not your priors.
+You are checking whether a citation is safe to use in `docs/v10-draft.md`. The verified citation corpus is `docs/v10-citations.md`, and this command must keep that path: the per-source caveats and the [CORRECTION]/[FIX] flags live nowhere else, so repointing it elsewhere would silently drop them. That file — read fresh, right now — is the only authority for what has been verified. Your memory of a prior read is not. Re-ground against the file, not your priors.
 
 ## Corpus map (fresh read)
 
