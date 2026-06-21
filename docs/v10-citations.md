@@ -5,7 +5,7 @@
 > - **Body insertions (Blocks A–F):** landed at `ec2c4dc`.
 > - **Appendix reference groups + Experiment-03 fix:** landed at `50ec6c2` / `df7cefb`.
 > - **Block C here was superseded by `block_C_reconciled.md` before merge** — do not apply the original single-subsection Block C below.
-> - **Corrections C1 / C2 were preventive and proved moot:** the claims they guard against were never present in `docs/v10-draft.md` (verified by grep at `ec2c4dc`). Nothing was applied; they remain as guard-rails only.
+> - **Correction C1 was preventive and proved moot:** the inverted orchestrator claim it guards against was never present in `docs/v10-draft.md` (verified by grep at `ec2c4dc`); nothing was applied, it remains a guard-rail only. **Correction C2 was discharged:** Kim et al. (2512.08296) was subsequently cited in the draft with the corrected v3 counts (180 configs / four benchmarks; 17.2× vs 4.4×) — body+appx `1602ea12`.
 > Anchors are given by **Part / heading** (stable), not line number — line numbers drift, and the assembly map's were already stale at HEAD.
 
 **Disposition**:
@@ -19,7 +19,7 @@
 | E | Stanford DEL token study · Anthropic multi-agent blog | Part 22 — AI Gateway & Cost Governance | Agent token economics | body `ec2c4dc` · appx `50ec6c2` |
 | F | Shinn/Reflexion (2303.11366) · Wang/CodeAct (2402.01030) | Part 3/10 — beside FIDES/CaMeL | Agent reliability & long-horizon execution (folded) | body `ec2c4dc` · appx `50ec6c2` |
 | [CORRECTION] C1 | inverted Anthropic orchestrator claim | not present in draft (grep `ec2c4dc`) → **no-op, moot** | — (do not introduce) | n/a |
-| [CORRECTION] C2 | DeepMind/Kim counts (Kim et al., 2512.08296) | "260 configs / six benchmarks" not present → **no-op, moot** | Kim **uncited → no Appendix entry** (no-orphan); 17.2× citable with 180 configs / 4 benchmarks *if* added | n/a |
+| [CORRECTION] C2 | DeepMind/Kim counts (Kim et al., 2512.08296) | Kim **now cited** — Part 3 compounding blockquote, with corrected v3 counts (180 configs / four benchmarks; 17.2× vs 4.4×) | Kim **added** — Agent reliability & long-horizon execution | body+appx `1602ea12` |
 | [FIX] Exp-03 | `claude-opus-4-7 → claude-opus-4-8` (Axis A) | `docs/thesis-experiments.md`, Exp 03 — spec only, not yet run | — | `df7cefb` |
 
 **Provenance note (updated).** Every reference below was verified against its primary source at staging time. Open item: the Sinha author list landed in the draft as a literal `[TODO: complete author list]` and still needs completing against the arXiv record before the bibliography is final.
