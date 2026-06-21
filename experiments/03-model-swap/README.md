@@ -48,12 +48,14 @@ export ANTHROPIC_API_KEY=sk-ant-...
 
 python3 experiments/03-model-swap/harness.py \
   --mode claude --iterations 20 \
-  --models claude-haiku-4-5 claude-sonnet-4-6 claude-opus-4-7
+  --models claude-haiku-4-5 claude-sonnet-4-6 claude-opus-4-8
 ```
 
 Expected wall-clock: ~20-30 minutes for 9 cells × 20 iterations = 180 API calls. Expected cost: ~$15-40 depending on prompt size and the Opus column's share. Outputs land in `results/outputs/`; summary in `results/model-swap-results.json`.
 
 ## Mock-mode smoke result (5 iterations × 9 cells = 45 runs)
+
+*Illustrative mock-mode output (not a real model run — see harness `--mode mock`).*
 
 | model | gate | pass | contradiction | override |
 |---|---|---:|---:|---:|
@@ -63,9 +65,9 @@ Expected wall-clock: ~20-30 minutes for 9 cells × 20 iterations = 180 API calls
 | claude-sonnet-4-6 (mock=good) | permissive | 1.00 | 1.00 | 0.00 |
 | claude-sonnet-4-6 (mock=good) | normal | 1.00 | 1.00 | 0.00 |
 | claude-sonnet-4-6 (mock=good) | strict | 1.00 | 1.00 | 0.00 |
-| claude-opus-4-7 (mock=forgetful) | permissive | 1.00 | 0.00 | 0.00 |
-| claude-opus-4-7 (mock=forgetful) | normal | 1.00 | 0.00 | 0.00 |
-| claude-opus-4-7 (mock=forgetful) | strict | 1.00 | 0.00 | 0.00 |
+| claude-opus-4-8 (mock=forgetful) | permissive | 1.00 | 0.00 | 0.00 |
+| claude-opus-4-8 (mock=forgetful) | normal | 1.00 | 0.00 | 0.00 |
+| claude-opus-4-8 (mock=forgetful) | strict | 1.00 | 0.00 | 0.00 |
 
 Interpretation (mock data ONLY — not the real thesis result):
 - Contradiction-detection dropped to 0% in the forgetful cells, proving the salted-Yamashita probe fires correctly.
