@@ -146,7 +146,7 @@ A claim circulating in external summaries states that a *lower*-capability orche
 
 ## [CORRECTION] C2 — DeepMind scaling-paper specifics
 
-The paper *Towards a Science of Scaling Agent Systems* (Kim et al., arXiv:2512.08296) is real, and its headline figure — independent agents amplifying errors 17.2× vs 4.4× under centralized coordination — is verbatim and citable. But external summaries garbled the setup: it used **180 configurations and four benchmarks** (Finance-Agent, BrowseComp-Plus, PlanCraft, Workbench), not “260 configurations / six benchmarks.” **Action**: cite the 17.2× figure freely; fix the config/benchmark counts wherever they appear.
+The paper *Towards a Science of Scaling Agent Systems* (Kim et al., arXiv:2512.08296) is real, and its headline figure — independent agents amplifying errors 17.2× vs 4.4× under centralized coordination — is verbatim and citable. The setup numbers changed between versions: the v1 preprint reported 260 configurations across six benchmarks, which the authors revised to **180 configurations and four benchmarks** (Finance-Agent, BrowseComp-Plus, PlanCraft, Workbench) by v3 (the current version). Cite the v3 figures; “260 / six” reflects the superseded v1. **Action**: cite the 17.2× figure freely; fix the config/benchmark counts wherever they appear.
 
 -----
 
