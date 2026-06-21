@@ -503,7 +503,7 @@ RLS provides coarse-grained row filtering. It is not a capability system: no unf
 
 - Per-session and per-stage token/USD budget caps enforced at the workflow layer (deterministic).
 - Daily reconciliation against Anthropic billing CSV.
-- Alert when `usd_estimated` exceeds stage budget by >10%.
+- Alert when `usd_estimated` exceeds stage budget by >10%. *(Specified, not yet active: `usd_estimated` is stubbed at `0.0` until a per-model rate table is populated.)*
 - WORM receipt storage for audit.
 
 > The cost case for a chokepoint with hard budget bounds is grounded in measured agent economics. The Stanford Digital Economy Lab’s analysis of agentic coding found agentic tasks consuming on the order of 1000× the tokens of plain chat in a controlled setting, with up to 30× variance on identical runs, driven mainly by input (re-sent context) rather than output. The 1000× figure is the controlled-study extreme; the production multiplier is smaller — Anthropic reports multi-agent systems using roughly 15× chat tokens, and practitioner estimates cluster around 5–30× — so the gateway’s budget ceiling should be sized to the production range, with the controlled figure as the worst case it must survive.
